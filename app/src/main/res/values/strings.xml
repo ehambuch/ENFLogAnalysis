@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ENF Logfileanalyse</string>
+    <string name="message_already_loaded">Datum bereits geladen</string>
+    <string name="shortcut_short_label">Analysiere</string>
+    <string name="shortcut_long_label">Analysiere ENF Logfile</string>
+    <string name="menuitem_openenfsettings">ENF Logfile öffnen</string>
+    <string name="menuitem_info">Info</string>
+    <string name="menuitem_faq">FAQ</string>
+    <string name="menuitem_cleardata">Daten löschen</string>
+    <string name="message_data_cleared">Alle Daten gelöscht</string>
+    <string name="message_data_loaded">Daten zur Analyse geladen</string>
+    <string name="text_charttitle">Analyse der Risikokontakte</string>
+    <string name="text_nodata">Keine Daten vorhanden</string>
+    <string name="message_error_logfile">Fehler beim Lesen des Logfiles</string>
+    <string name="message_internal_error">Interner Fehler aufgetreten</string>
+    <string name="text_license"><![CDATA[<p>Erstellt 2020 von Eric Hambuch (erichambuch@googlemail.com)</p>\n<p>Diese App nutzt <a href="http://material.io">Material Design</a> von Google und <a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a> von Philipp Jahoda, beides unter der <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.</p>\n<br/><p><b>Datenschutzhinweis:</b> Diese App verarbeitet Logfiles des <em>Exposure Notification Frameworks</em> von Google auf ihrem lokalen Gerät. Sie überträgt keine Daten in das Internet oder anderswohin.</p>]]></string>
+    <string name="url_faq">https://sites.google.com/site/erichambuch</string>
+    <string name="message_error_no_enf">Kein Exposure Notificaton Framework installiert.</string>
+    <string name="text_riskcontact14days">Risikokontakt vor genau 14 Tagen ausgehend vom: </string>
+    <string name="text_riskcontactprobability">Abschätzung der Kontaktwahrscheinlichkeit des Treffers vom: </string>
+</resources>

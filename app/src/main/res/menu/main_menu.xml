@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_openenfsettings"
+        android:title="@string/menuitem_openenfsettings" />
+    <item
+        android:id="@+id/menu_info"
+        android:title="@string/menuitem_info" />
+    <item
+        android:id="@+id/menu_faq"
+        android:title="@string/menuitem_faq" />
+    <item
+        android:id="@+id/menu_cleardata"
+        android:title="@string/menuitem_cleardata" />
+</menu>

@@ -1,0 +1,14 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="analyze"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_background"
+        android:shortcutShortLabel="@string/shortcut_short_label"
+        android:shortcutLongLabel="@string/shortcut_long_label">
+        <intent
+            android:action="android.intent.action.SEND"
+            android:targetPackage="de.erichambuch.enfloganalysis"
+            android:targetClass="de.erichambuch.enfloganalysis.MainActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>
