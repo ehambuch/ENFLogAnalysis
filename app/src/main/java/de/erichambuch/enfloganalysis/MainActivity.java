@@ -47,6 +47,8 @@ import de.erichambuch.enfloganalysis.database.ENFEntry;
 
 /**
  * Main activity of app.
+ *
+ * @author Eric Hambuch (erichambuch@googlemail.com)
  */
 public class MainActivity extends AppCompatActivity {
 

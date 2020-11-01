@@ -10,3 +10,6 @@ Many people are wondering about the "green" risk contacts in the German COVID-19
 Please use this app at your own risk. The results are not reliable due to several privacy restrictions in the ENF and the setup of the COVID-19 tracing apps. Please check out an alternative (better) app
 https://play.google.com/store/apps/details?id=org.tosl.warnappcompanion that required a "rooted" phone but delivers better results.
 
+Check out the discussions:
+* https://github.com/corona-warn-app/cwa-backlog/issues/23
+* https://felixlen.github.io/ena_log/
