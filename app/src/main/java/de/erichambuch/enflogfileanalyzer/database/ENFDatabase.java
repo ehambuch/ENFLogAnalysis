@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis.database;
+package de.erichambuch.enflogfileanalyzer.database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

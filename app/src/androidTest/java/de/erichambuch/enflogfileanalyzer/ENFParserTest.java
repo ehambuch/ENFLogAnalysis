@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis;
+package de.erichambuch.enflogfileanalyzer;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import de.erichambuch.enfloganalysis.database.ExposureChecks;
+import de.erichambuch.enflogfileanalyzer.database.ExposureChecks;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +24,7 @@ public class ENFParserTest {
 
     @Test
     public void testParseENF() throws JSONException {
-        List<ExposureChecks> checksList = ENFParser.parseENFLog("[{\"timestamp\":\"31. Oktober 2020, 08:10\",\"keyCount\":226660,\"matchesCount\":2,\"appName\":\"Corona-Warn\",\"hash\":\"qqTC4zpbUaAMfK\\/pSoikjdfLwCs4IRWFf3yPSy78Z6U=\"},{\"timestamp\":\"30. Oktober 2020, 08:25\",\"keyCount\":244428,\"matchesCount\":2,\"appName\":\"Corona-Warn\",\"hash\":\"ORxtIYsKyYVflcyFPS6S+TBAaS11wzj4HGqcqpfiMu4=\"}]");
+        List<ExposureChecks> checksList = ENFParser.parseENFLog("[{\"timestamp\":\"31. Oktober 2020, 08:10\",\"keyCount\":226660,\"matchesCount\":2,\"appName\":\"Warn-App\",\"hash\":\"qqTC4zpbUaAMfK\\/pSoikjdfLwCs4IRWFf3yPSy78Z6U=\"},{\"timestamp\":\"30. Oktober 2020, 08:25\",\"keyCount\":244428,\"matchesCount\":2,\"appName\":\"Warn-App\",\"hash\":\"ORxtIYsKyYVflcyFPS6S+TBAaS11wzj4HGqcqpfiMu4=\"}]");
         assertEquals(2, checksList.size());
         assertEquals(226660, checksList.get(0).keyCount);
         // TODO ...

@@ -7,8 +7,8 @@
         android:shortcutLongLabel="@string/shortcut_long_label">
         <intent
             android:action="android.intent.action.SEND"
-            android:targetPackage="de.erichambuch.enfloganalysis"
-            android:targetClass="de.erichambuch.enfloganalysis.MainActivity" />
+            android:targetPackage="de.erichambuch.enflogfileanalyzer"
+            android:targetClass="de.erichambuch.enflogfileanalyzer.MainActivity" />
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
 </shortcuts>

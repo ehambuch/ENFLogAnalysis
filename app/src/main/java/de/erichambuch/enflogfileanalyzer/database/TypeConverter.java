@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis.database;
+package de.erichambuch.enflogfileanalyzer.database;
 
 import java.time.Instant;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis;
+package de.erichambuch.enflogfileanalyzer;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -38,12 +38,12 @@ import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.erichambuch.enfloganalysis.chart.ChartDataConverter;
-import de.erichambuch.enfloganalysis.chart.MyMarker;
-import de.erichambuch.enfloganalysis.chart.MyValueFormatter;
-import de.erichambuch.enfloganalysis.chart.MyXAxisFormatter;
-import de.erichambuch.enfloganalysis.database.ENFDatabase;
-import de.erichambuch.enfloganalysis.database.ENFEntry;
+import de.erichambuch.enflogfileanalyzer.chart.ChartDataConverter;
+import de.erichambuch.enflogfileanalyzer.chart.MyMarker;
+import de.erichambuch.enflogfileanalyzer.chart.MyValueFormatter;
+import de.erichambuch.enflogfileanalyzer.chart.MyXAxisFormatter;
+import de.erichambuch.enflogfileanalyzer.database.ENFDatabase;
+import de.erichambuch.enflogfileanalyzer.database.ENFEntry;
 
 /**
  * Main activity of app.
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
             barEntryList.add(barEntry);
             if (exposureData.matchesCount > maximumMatches)
                 maximumMatches = exposureData.matchesCount;
-            if (exposureData.riskContacts > 0) { // only add line of contact probability
+            if (exposureData.riskContacts >= 0) { // only add line of contact probability
                 Entry entry = new Entry(dayIndex, exposureData.riskContacts);
                 entry.setData(exposureData.explanation);
                 lineEntryList.add(entry);
@@ -268,6 +268,10 @@ public class MainActivity extends AppCompatActivity {
         MyMarker marker = new MyMarker(this, R.layout.highlighter);
         chart.setMarker(marker);
         marker.setChartView(chart);
+        chart.setPinchZoom(false); // all zooming off (fixed chart)
+        chart.setDoubleTapToZoomEnabled(false);
+        chart.setDragEnabled(false);
+        chart.setScaleEnabled(false);
         chart.invalidate();
     }
 

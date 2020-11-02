@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis;
+package de.erichambuch.enflogfileanalyzer;
 
 import androidx.room.Transaction;
 
@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import de.erichambuch.enfloganalysis.database.ENFDatabase;
-import de.erichambuch.enfloganalysis.database.ENFEntry;
-import de.erichambuch.enfloganalysis.database.ExposureChecks;
+import de.erichambuch.enflogfileanalyzer.database.ENFDatabase;
+import de.erichambuch.enflogfileanalyzer.database.ENFEntry;
+import de.erichambuch.enflogfileanalyzer.database.ExposureChecks;
 
 /**
  * Parser for ENF - Exposure Notification Framework Logfile as exported by Google settings.

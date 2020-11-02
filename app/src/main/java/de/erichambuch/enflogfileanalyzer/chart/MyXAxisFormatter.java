@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis.chart;
+package de.erichambuch.enflogfileanalyzer.chart;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.ValueFormatter;

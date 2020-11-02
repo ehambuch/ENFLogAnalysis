@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis.chart;
+package de.erichambuch.enflogfileanalyzer.chart;
 
 import android.content.Context;
 import android.widget.TextView;
@@ -7,7 +7,7 @@ import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 
-import de.erichambuch.enfloganalysis.R;
+import de.erichambuch.enflogfileanalyzer.R;
 
 /**
  * Marker that is displayed if an entry is selected (kind of tooltip).

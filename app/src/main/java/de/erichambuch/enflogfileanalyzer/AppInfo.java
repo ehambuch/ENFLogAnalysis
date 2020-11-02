@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis;
+package de.erichambuch.enflogfileanalyzer;
 
 /**
  * ENF Log Analysis.

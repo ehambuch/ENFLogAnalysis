@@ -1,4 +1,4 @@
-package de.erichambuch.enfloganalysis.chart;
+package de.erichambuch.enflogfileanalyzer.chart;
 
 import android.content.res.Resources;
 
@@ -15,11 +15,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
-import de.erichambuch.enfloganalysis.R;
-import de.erichambuch.enfloganalysis.database.ENFEntry;
-import de.erichambuch.enfloganalysis.database.ENFEntryDAO;
-import de.erichambuch.enfloganalysis.database.ExposureChecks;
-import de.erichambuch.enfloganalysis.database.ExposureChecksDAO;
+import de.erichambuch.enflogfileanalyzer.R;
+import de.erichambuch.enflogfileanalyzer.database.ENFEntry;
+import de.erichambuch.enflogfileanalyzer.database.ENFEntryDAO;
+import de.erichambuch.enflogfileanalyzer.database.ExposureChecks;
+import de.erichambuch.enflogfileanalyzer.database.ExposureChecksDAO;
 
 /**
  * Convert ENF Log data to chart data to be displayed. This class also contains the logic to determinate the risk contacts.
@@ -114,8 +114,10 @@ public class ChartDataConverter {
                 return o2.date.compareTo(o1.date);
             }
         });
-        // Step 4: now try to find out when risk contacts really occured
+        // Step 4: now try to find out when risk contacts really occured. We use a sliding check of
+        // (today,yesterday) and check the number of matches
         int length = exposureHistory.size();
+        int matchesCountOfRunningIncident = 0;
         for (int i = 0; i < length - 1; i++) {
             // compare current day with yesterday and try to guess what happened
             ChartData todayChartData = exposureHistory.get(i);
@@ -131,15 +133,25 @@ public class ChartDataConverter {
                 riskContactChartData.riskContacts += (yesterdayChartData.matchesCount - todayChartData.matchesCount);
                 riskContactChartData.explanation = resources.getString(R.string.text_riskcontact14days) +
                         dateFormatter.format(todayChartData.date);
+
+                // now looking backward we have a sequence of the same matches values. We store the value
+                // so we don't create a Case 3 event, as we already know the exact day
+                matchesCountOfRunningIncident = yesterdayChartData.matchesCount;
             }
-            // Cast 2: TODO: possible case not covered: value stays constant for more than 14 days, then we had new matches but also a risk contact
+            // Case 2: TODO: possible case not covered: value stays constant for more than 14 days, then we had new matches but also a risk contact
+
             // Case 3: matches has increased, but we are not sure when this happened in the past...
             // so we add a kind of "probability distribution" to our findings related the past days
             // see https://github.com/corona-warn-app/cwa-backlog/issues/23
             // and https://github.com/corona-warn-app/cwa-wishlist/issues/100
-            if (todayChartData.matchesCount > yesterdayChartData.matchesCount) {
+            // https://github.com/corona-warn-app/cwa-backlog/issues/23
+            //"To sum up, you get a low risk notification if your CWA app identifies a contact with a positive COVID-19
+            // person that took place in the area of 1-6 days when the positive test result is granted and it was between
+            // 10-68 minutes long in a range between 0-8 meters, depending on the transmission risk level.
+            if (todayChartData.matchesCount > yesterdayChartData.matchesCount &&
+                todayChartData.matchesCount != matchesCountOfRunningIncident) {
                 float riskContacts = (todayChartData.matchesCount - yesterdayChartData.matchesCount);
-                float[] factors = {0.0f, 0.3f, 0.5f, 0.7f, 1.0f, 0.8f, 0.6f, 0.4f, 0.2f}; // probability distribution of contact
+                float[] factors = {0.0f, 0.0f, 0.6f, 0.85f, 0.95f, 0.9f, 0.8f, 0.7f, 0.5f}; // probability distribution of contact
                 for (int f = 0; f < factors.length && (f + i + 1) < length; f++) {
                     ChartData riskyDays = exposureHistory.get(f + i + 1);
                     riskyDays.riskContacts += (riskContacts * factors[f]); // sum up the contacts
@@ -147,6 +159,7 @@ public class ChartDataConverter {
                         riskyDays.explanation = resources.getString(R.string.text_riskcontactprobability) +
                                 dateFormatter.format(todayChartData.date);
                 }
+                matchesCountOfRunningIncident = yesterdayChartData.matchesCount;
             }
         }
 
